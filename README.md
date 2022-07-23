@@ -52,7 +52,7 @@ In case we want to register multiple instance with the same model, we use `exter
 In the following example we register an instance `BridgeWETHe`, that it is going to use the address `0x49D5c2BdFfac6CE2BFdB6640F4F80f226bc10bAB`, and the model `BridgeToken`.
 Note that to be possible to find the `BridgeToken` model, it is necessary to pass the group `test` as a parameter.
 
-`$ npx external-add-instance --instance BridgeWETHe --model BridgeToken --group test --address 0x49D5c2BdFfac6CE2BFdB6640F4F80f226bc10bAB`
+`$ npx hardhat external-add-instance --instance BridgeWETHe --model BridgeToken --group test --address 0x49D5c2BdFfac6CE2BFdB6640F4F80f226bc10bAB`
 
 
 ## Environment extensions
