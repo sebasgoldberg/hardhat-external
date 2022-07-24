@@ -1,5 +1,4 @@
 import { task, types } from "hardhat/config"
-import axios from "axios";
 import "@nomiclabs/hardhat-ethers";
 
 import { extendConfig, extendEnvironment } from "hardhat/config";
@@ -11,8 +10,9 @@ import { HardhatConfig, HardhatUserConfig } from "hardhat/types";
 import "./type-extensions";
 import { IExternalAliasForNetwork } from "./type-extensions";
 import { External } from "./External";
-import path from "path";
 
+import path from "path";
+import axios from "axios";
 
 extendConfig(
   (config: HardhatConfig, userConfig: Readonly<HardhatUserConfig>) => {
