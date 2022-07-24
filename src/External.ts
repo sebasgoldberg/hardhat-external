@@ -73,9 +73,21 @@ export class External{
      * 
      * @param name Same value used when called register-external-contract task.
      */
-     getContract(instanceName: string, modelGroup?: string): ethers.Contract {
+     getContract(instanceOrModelName: string, modelGroup?: string, instanceAddress?: string): ethers.Contract {
 
-        const instance: IExternalInstance = this.getInstance(instanceName, modelGroup)
+        if (instanceAddress) {
+
+            const model: IExternalModel = this.getModel(instanceOrModelName, modelGroup)
+    
+            return new this.hre.ethers.Contract(
+                instanceAddress,
+                model.abi,
+                this.hre.ethers.provider
+            )
+    
+        }
+
+        const instance: IExternalInstance = this.getInstance(instanceOrModelName, modelGroup)
 
         const model: IExternalModel = this.getModel(instance.modelName, instance.modelGroup)
     
