@@ -95,12 +95,13 @@ task(
             abi: JSON.parse(result),
         })
 
-        hre.external.saveInstance({
-            instanceAddress: instanceaddress || address,
-            instanceName: instance,
-            modelGroup: group,
-            modelName: model
-        })
+        if (instance)
+            hre.external.saveInstance({
+                instanceAddress: instanceaddress || address,
+                instanceName: instance,
+                modelGroup: group,
+                modelName: model
+            })
 
         await hre.run('typechain')
 
