@@ -1,4 +1,6 @@
 import { task, types } from "hardhat/config"
+
+import "@sebasgoldberg/hardhat-network-alias"
 import "@nomiclabs/hardhat-ethers";
 
 import { extendConfig, extendEnvironment } from "hardhat/config";
@@ -8,7 +10,6 @@ import { HardhatConfig, HardhatUserConfig } from "hardhat/types";
 // This import is needed to let the TypeScript compiler know that it should include your type
 // extensions in your npm package's types file.
 import "./type-extensions";
-import { IExternalAliasForNetwork } from "./type-extensions";
 import { External } from "./External";
 
 import path from "path";
@@ -30,7 +31,6 @@ extendConfig(
     // need to apply a default value, like in this example.
 
     const pathDefined = userConfig.external && userConfig.external.path
-    const aliasesDefined = userConfig.external && userConfig.external.networkAliases
 
     const externalPath = userConfig.external?.path as string
 
@@ -39,10 +39,7 @@ extendConfig(
             path.isAbsolute(externalPath) ?
             externalPath
                 : path.normalize(path.join(config.paths.root, externalPath))
-            : path.join(config.paths.root, "external"),
-        networkAliases: aliasesDefined ?
-            userConfig.external.networkAliases as IExternalAliasForNetwork
-            : {}
+            : path.join(config.paths.root, "external-plugin"),
     }
 
     // Adding models location to be considered by typechain.

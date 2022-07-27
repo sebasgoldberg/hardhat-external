@@ -23,21 +23,18 @@ export class External{
 
     }
 
-    protected getNetworkName(networkNameOrAlias: string): string{
-        return ( this.hre.config.external.networkAliases[networkNameOrAlias] ?
-            this.hre.config.external.networkAliases[networkNameOrAlias] :
-            networkNameOrAlias
-        )
+    protected getNetworkName(): string{
+        return this.hre.networkAlias.getNetworkName("external-plugin")
     }
 
     protected getExternalModelPath(group: string|undefined): string {
         const { network } = this.hre
-        return `${ this.hre.config.external.path }/${this.getNetworkName(network.name)}${ group ? `/${group}` : ''}/model/`
+        return `${ this.hre.config.external.path }/${this.getNetworkName()}${ group ? `/${group}` : ''}/model/`
     }
     
     protected getExternalInstancePath(group: string|undefined): string {
         const { network } = this.hre
-        return `${ this.hre.config.external.path }/${this.getNetworkName(network.name)}${ group ? `/${group}` : ''}/instance`
+        return `${ this.hre.config.external.path }/${this.getNetworkName()}${ group ? `/${group}` : ''}/instance`
     }
 
     protected getExternalModelFilename(modelName: string, group: string|undefined): string {
@@ -69,10 +66,6 @@ export class External{
         return instance
     }
 
-    /**
-     * 
-     * @param name Same value used when called register-external-contract task.
-     */
      getContract(instanceOrModelName: string, modelGroup?: string, instanceAddress?: string): ethers.Contract {
 
         if (instanceAddress) {

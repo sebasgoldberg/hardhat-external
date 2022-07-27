@@ -76,19 +76,23 @@ Note that we are using the specific contract type `BridgeToken` generated using 
 The models are created for each network (defined in taks using --network parameter).
 
 In case the models registered for one network are the same for another network, it is possible to specify this with an alias.
+For this, we use [@sebasgoldberg/hardhat-network-alias plugin](https://github.com/sebasgoldberg/hardhat-network-alias).
 
 In the following example, the models are registered for the `hardhat` network, and we want to use the same models for the `localhost` network.
 
 ``` typescript
 const config: HardhatUserConfig = {
   // ...
-  external:{
-    networkAliases: {
+  networkAliases:{
+    "external-plugin": { // Note that the group must be "external-plugin".
       'localhost': 'hardhat'
     }
-  },
+  }
   // ...
 ```
+
+Note above that the group for aliases must be "external-plugin".
+
 
 Additionally, by default all information related to models and instances are saved in the `external` folder.
 

@@ -25,11 +25,7 @@ describe("Integration tests examples", function () {
     it("Should add the external.path and the external.networkAliases to the config", function () {
       assert.equal(
         this.hre.config.external.path,
-        path.join(process.cwd(), "external")
-      );
-      assert.equal(
-        this.hre.config.external.networkAliases['localhost'],
-        'hardhat'
+        path.join(process.cwd(), "external-plugin")
       );
     });
   });

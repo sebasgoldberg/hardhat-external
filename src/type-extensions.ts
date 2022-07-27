@@ -8,10 +8,6 @@ import { External } from "./External";
 
 type INetworkName = string
 
-export interface IExternalAliasForNetwork {
-  [aliasFor: string]: INetworkName
-}
-
 declare module "hardhat/types/config" {
   // This is an example of an extension to one of the Hardhat config values.
 
@@ -20,7 +16,6 @@ declare module "hardhat/types/config" {
   export interface HardhatUserConfig {
     external?: {
       path?: string,
-      networkAliases?: IExternalAliasForNetwork,
     }
   }
 
@@ -32,7 +27,6 @@ declare module "hardhat/types/config" {
   export interface HardhatConfig {
     external: {
       path: string,
-      networkAliases: IExternalAliasForNetwork,
     }
   }
 }
