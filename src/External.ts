@@ -75,7 +75,7 @@ export class External{
             return new this.hre.ethers.Contract(
                 instanceAddress,
                 model.abi,
-                this.hre.ethers.provider
+                this.hre.getProvider()
             )
     
         }
@@ -87,7 +87,7 @@ export class External{
         return new this.hre.ethers.Contract(
             instance.instanceAddress,
             model.abi,
-            this.hre.ethers.provider
+            this.hre.getProvider()
         )
     
     }

@@ -2,6 +2,7 @@ import { task, types } from "hardhat/config"
 
 import "@sebasgoldberg/hardhat-network-alias"
 import "@nomiclabs/hardhat-ethers";
+import "@sebasgoldberg/hardhat-wsprovider"
 
 import { extendConfig, extendEnvironment } from "hardhat/config";
 import { lazyObject } from "hardhat/plugins";
@@ -41,6 +42,14 @@ extendConfig(
                 : path.normalize(path.join(config.paths.root, externalPath))
             : path.join(config.paths.root, "external-plugin"),
     }
+
+    if (!config.networkAliases["external-plugin"])
+        config.networkAliases["external-plugin"] = 
+            userConfig.networkAliases ?
+                userConfig.networkAliases["external-plugin"] ?
+                    userConfig.networkAliases["external-plugin"]
+                    : {}
+                : {}
 
     // Adding models location to be considered by typechain.
 

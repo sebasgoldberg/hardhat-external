@@ -2,6 +2,9 @@
 import { HardhatUserConfig } from "hardhat/types";
 
 import "@sebasgoldberg/hardhat-network-alias"
+import "@nomiclabs/hardhat-ethers";
+import "@sebasgoldberg/hardhat-wsprovider"
+
 import "../../../src/index";
 
 const config: HardhatUserConfig = {
