@@ -1,6 +1,6 @@
 {
   "name": "@sebasgoldberg/hardhat-external",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Hardhat plugin to work with external contract dependencies.",
   "repository": "github:sebasgoldberg/hardhat-external",
   "author": "Sebastian Goldberg",
